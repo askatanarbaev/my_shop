@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <img class="d-block img-fluid" src="https://st3.depositphotos.com/10853016/18691/v/1600/depositphotos_186916394-stock-illustration-illustration-on-the-theme-of.jpg" style="height: 400px; width:2000px ;" >
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+       
+    <div class="col-lg-4">
+        <img class="thumbnail" style="width: 250px; heigh:250px;" src="https://st3.depositphotos.com/10853016/18691/v/1600/depositphotos_186916394-stock-illustration-illustration-on-the-theme-of.jpg">
+        <div class="box-element product">
+            <h6><strong>name</strong></h6>
+            <h6><strong>name</strong></h6>
+            <h6><strong>name</strong></h6>
+            <h6><strong>name</strong></h6>
+            <hr>
+
+             <button  
+            class="btn btn-outline-secondary add-btn ">Add to Cart</button>
+            
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right">
+                $23</h4>
+            <hr>
+
+        </div>
+    </div>
+  
+</div>
+{% endblock content %}
+
+
