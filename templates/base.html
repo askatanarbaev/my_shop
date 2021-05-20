@@ -67,9 +67,11 @@
       <div class="col-lg-3">
         <h1 class="my-4" style="font-size:30px;">category tools:</h1>
         <div class="list-group">
-          {% for cat in category %}
-          <a href="#" class="list-group-item">{{cat.name}}</a>
-          {% endfor %}
+
+          
+          <a href="{% url 'catetory_detail' %}" class="list-group-item">stoika</a>
+          <a href="{% url 'catetory_detail2' %}" class="list-group-item">formwork</a>
+          <a href="#" class="list-group-item">Car</a>
         </div>
       </div>
       <!-- /.col-lg-3 -->
@@ -99,25 +101,6 @@
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-<script>
-var csrftoken = Cookies.get('csrftoken');
-functioncsrfSafeMethod(method) {
-// Для этих методов токен не будет подставляться в заголовок.
-return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-beforeSend: function(xhr, settings) {
-if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-xhr.setRequestHeader("X-CSRFToken", csrftoken);
-}
-}
-});
-$(document).ready(function(){
-  {% block domready %}{% endblock %}
-});
-</script>
-
-
 
 </body>
 
