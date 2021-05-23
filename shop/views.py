@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 from django.views.generic.list import ListView
 from django.utils import timezone
@@ -36,3 +36,17 @@ class CategoryListView2(ListView):
     def get_context_data(self, **kwargs):
         context = super(CategoryListView2, self).get_context_data(**kwargs)
         return context 
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    context_object_name = 'product'
+    template_name = 'product_detail.html'
+    slug_url_kwarg = 'slug'
+
+
+
+# # modal view
+# def modalproduct(request, pk):
+#     modal_product = get_object_or_404(Product, pk=pk)
+#     return render(request, 'modal-product.html', locals())

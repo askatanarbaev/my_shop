@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,12 +73,19 @@
           
           <a href="{% url 'catetory_detail' %}" class="list-group-item">stoika</a>
           <a href="{% url 'catetory_detail2' %}" class="list-group-item">formwork</a>
-          <a href="#" class="list-group-item">Car</a>
+          <a href="{% url 'home' %}" class="list-group-item">all</a>
         </div>
       </div>
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9">
+      
+
+      
+
+        
+
+      
+
         {% block content %}
         
         
@@ -101,7 +110,7 @@
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
+<script src="{% static 'js/scripts.js' %}"></script>
 </body>
 
 </html>
