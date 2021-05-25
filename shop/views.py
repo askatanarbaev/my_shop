@@ -4,8 +4,7 @@ from django.views.generic.list import ListView
 from django.utils import timezone
 from django.views.generic import View
 from django.views.generic import DetailView
-
-
+from cart.forms import CartAddproductForm
 
 class ProductListView(ListView):
     model = Product
@@ -44,7 +43,8 @@ class ProductDetailView(DetailView):
     template_name = 'product_detail.html'
     slug_url_kwarg = 'slug'
 
-
+    def cart(self, request):
+        cart_product_form = CartAddproductForm()
 
 # # modal view
 # def modalproduct(request, pk):

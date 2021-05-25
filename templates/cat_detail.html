@@ -2,6 +2,22 @@
 
 {% block content %}
 
+<div class="col-lg-9">
+  <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <img class="d-block img-fluid" src="https://st3.depositphotos.com/10853016/18691/v/1600/depositphotos_186916394-stock-illustration-illustration-on-the-theme-of.jpg" style="height: 400px; width:2000px ;" >
+      </div>
+    </div>
+  </div>
+
+
+
 <div class="row">
   {% for prod in cat_prod %}
 {% if prod.name == 'stoika' %}
