@@ -7,6 +7,5 @@ urlpatterns = [
     path('stoika/', CategoryListView.as_view(), name='catetory_detail'),
     path('formwork/', CategoryListView2.as_view(), name='catetory_detail2'),
     path('product/<str:slug>/', ProductDetailView.as_view(), name='product_detail'),
-    # path('modal-product/<int:pk>/', modalproduct, name='modal-product'),
 
 ]

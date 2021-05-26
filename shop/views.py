@@ -3,8 +3,10 @@ from .models import Product
 from django.views.generic.list import ListView
 from django.utils import timezone
 from django.views.generic import View
-from django.views.generic import DetailView
-from cart.forms import CartAddproductForm
+from django.views.generic import DetailView, FormView
+from cart.forms import CartAddProductForm
+from django.views.generic import View
+
 
 class ProductListView(ListView):
     model = Product
@@ -38,15 +40,13 @@ class CategoryListView2(ListView):
 
 
 class ProductDetailView(DetailView):
+    
     model = Product
     context_object_name = 'product'
     template_name = 'product_detail.html'
     slug_url_kwarg = 'slug'
-
-    def cart(self, request):
-        cart_product_form = CartAddproductForm()
-
-# # modal view
-# def modalproduct(request, pk):
-#     modal_product = get_object_or_404(Product, pk=pk)
-#     return render(request, 'modal-product.html', locals())
+    
+    def get_context_data(self, **kwargs):
+            context = super(ProductDetailView, self).get_context_data(**kwargs)
+            context['cart_product_form'] = CartAddProductForm
+            return context
