@@ -1,0 +1,31 @@
+
+{% load staticfiles %}
+
+        <div class="product-images">
+            <div class="main-image images">
+                <img alt="#" src="{{ modal_product.image.url }}" width="450px" height="250"/>
+            </div>
+        </div><!-- .product-images -->
+        <div class="product-info">
+            <h1>{{ modal_product.name }}</h1>
+            <div class="price-box-3">
+                <hr />
+                <div class="s-price-box">
+
+                    <span class="old-price">{{ modal_product.price }} сом</span>
+                </div>
+                <hr />
+            </div>
+
+            </div>
+            <div class="quick-desc">
+                {{ modal_product.description }}
+            </div>
+
+            <div style="display: inline-block;">
+                <div class="input-group">
+                    
+                    <button type="submit" class="btn btn-danger">Купить</button>
+
+                </div>
+            </div>

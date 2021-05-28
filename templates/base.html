@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,16 +69,34 @@
       <div class="col-lg-3">
         <h1 class="my-4" style="font-size:30px;">category tools:</h1>
         <div class="list-group">
-
-          
           <a href="{% url 'catetory_detail' %}" class="list-group-item">stoika</a>
           <a href="{% url 'catetory_detail2' %}" class="list-group-item">formwork</a>
-          <a href="#" class="list-group-item">Car</a>
+          <a href="{% url 'home' %}" class="list-group-item">all</a>
+        </div>
+        <div class="cart" >
+          {% with total_items=cart|length %}
+{% if cart|length > 0 %}
+Your cart:
+<a href="{% url 'cart:cart_detail' %}" class="list-group-item">
+{{ total_items }} item{{ total_items|pluralize }},
+${{ cart.get_total_price }}
+</a>
+{% else %}
+Your cart is empty.
+{% endif %}
+{% endwith %}
         </div>
       </div>
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9">
+      
+
+      
+
+        
+
+      
+
         {% block content %}
         
         
@@ -101,7 +121,7 @@
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
+<script src="{% static 'js/scripts.js' %}"></script>
 </body>
 
 </html>

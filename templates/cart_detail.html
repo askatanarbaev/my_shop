@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+  <hr>
+  <br>
+  <br>
+  <hr>
+  <br>
+
+    {% for item in cart %}
+            {% with product=item.product %}
+<div class="row">
+    <div class="col-md-4">
+        <img src="{{ product.image.url }}" alt="" class="img-fluid">
+    </div>
+    <div class="col-md-8">
+        <h3>title: {{ product.name }}</h3>
+        <p>price: {{ product.price }}</p>
+        <p>quantity: {{ item.quantity }}</p>
+        <p>
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {{ item.update_quantity_form.quantity }}
+            {{ item.update_quantity_form.update }}
+            <input type="submit" value="Update">
+            {% csrf_token %}
+            </form>
+        </p>
+
+        <p><a href="{% url 'cart:cart_remove' product.id%}" class="btn btn-primary">Remove</a></p>
+        <p class="num">${{ item.total_price }}</p>
+
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+          {{ cart_product_form }}
+          {% csrf_token %}
+          <input type="submit" value="Add to cart">
+          </form>
+        
+        <hr>
+    </div>
+    {% endwith %}
+{% endfor %}
+
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">${{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url 'home' %}" class="btn btn-primary">Continue shopping</a>
+        <a href="{% url 'orders:order_create' %}" class="btn btn-primary">
+            Checkout
+            </a>
+    </p>
+
+{% endblock %}
+
