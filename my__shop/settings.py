@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j+u5)eu(xbr(9r7ao(5v1z5ti0j4_=mj187!xr^*r6*^j(#elt'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +154,20 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Africa/Nairobi'
+
+# SETTINGS BRAINTREE
+
+BRAINTREE_MERCHANT_ID = config('BRAINTREE_MERCHANT_ID')
+BRAINTREE_PUBLIC_KEY = config('BRAINTREE_PUBLIC_KEY')
+BRAINTREE_PRIVATE_KEY = config('BRAINTREE_PRIVATE_KEY')
+
+
+from braintree import Configuration, Environment
+
+Configuration.configure(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
+
